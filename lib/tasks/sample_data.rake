@@ -2,7 +2,7 @@ namespace :db do
   desc "Fill database with sample data"
   task populate: :environment do
     User.create!(name: "Example User",
-                 email: "example@mail.com",
+                 email: "Example@user.com",
                  password: "123456",
                  password_confirmation: "123456")
     
@@ -36,15 +36,20 @@ namespace :db do
                            street: Faker::Address.street_address)
       hotel.save
 
-      7.times do
+      rates_number = rg.rand(1..10)
+
+      rates_number.times do
         hotel_rate = rg.rand(1..5)
-        rate = hotel.rates.build(rate: rg.rand(1..5), comment: Faker::Lorem.sentence)
+        rate = hotel.rates.build(rate: hotel_rate, comment: Faker::Lorem.sentence)
         rate.user = users[rg.rand(5)]
         rate.save
-        hotel.rate_total += hotel_rate
+
+        hotel.rates_total += hotel_rate;
       end
-      hotel.rate_avg = hotel.rates_total.to_f / 7
-      hotel_save
+
+      hotel.rate_avg = hotel.rates_total.to_f / rates_number;
+      hotel.save
+
 
     end  
      

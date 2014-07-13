@@ -1,8 +1,11 @@
 Hotels::Application.routes.draw do
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
+  resources :hotels, only: [:index, :new, :create, :show, :update]
+
 
   root  'static_pages#home'
+  match '/rating',  to: 'hotels#index',  via: 'get'
   match '/signup',  to: 'users#new',            via: 'get'
   match '/signin',  to: 'sessions#new',         via: 'get'
   match '/signout', to: 'sessions#destroy',     via: 'delete'

@@ -1,14 +1,20 @@
 Hotels::Application.routes.draw do
-  resources :users
+  resources :users, only: [:new, :create, :edit, :update]
   resources :sessions, only: [:new, :create, :destroy]
-  resources :hotels, only: [:index, :new, :create, :show, :update]
-
+  resources :hotels, only: [:index, :new, :create, :show]
+  resources :rates, only: [:create]
 
   root  'static_pages#home'
+  match '/home',    to: 'static_pages#home', via: 'get' 
   match '/rating',  to: 'hotels#index',  via: 'get'
-  match '/signup',  to: 'users#new',            via: 'get'
-  match '/signin',  to: 'sessions#new',         via: 'get'
-  match '/signout', to: 'sessions#destroy',     via: 'delete'
+  match '/signup',  to: 'users#new',     via: 'get'
+  match '/signin',  to: 'sessions#new',  via: 'get'
+  match '/signout', to: 'sessions#destroy',  via: 'delete'
+
+
+
+  
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

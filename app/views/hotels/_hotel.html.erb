@@ -1,4 +1,7 @@
 <li id="<%= hotel.id %>">
+  <span class="photo">
+  	<img src='<%= "#{hotel.photo_url}" %>' height='100' width='100'> 
+  </span>	
   <span class="hotel">
     <%= link_to hotel.title, hotel %>
     <%= "*"*hotel.stars %>

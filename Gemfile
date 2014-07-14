@@ -9,6 +9,8 @@ gem 'will_paginate', '3.0.4'
 gem 'bootstrap-will_paginate', '0.0.9'
 gem 'faker', '1.1.2'
 gem 'simple_form', '3.0.1' 
+gem 'carrierwave'
+
 
 
 group :development, :test do

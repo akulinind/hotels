@@ -1,5 +1,5 @@
 Hotels::Application.routes.draw do
-  resources :users, only: [:new, :create, :edit, :update]
+  resources :users
   resources :sessions, only: [:new, :create, :destroy]
   resources :hotels, only: [:index, :new, :create, :show]
   resources :rates, only: [:create]
@@ -10,6 +10,7 @@ Hotels::Application.routes.draw do
   match '/signup',  to: 'users#new',     via: 'get'
   match '/signin',  to: 'sessions#new',  via: 'get'
   match '/signout', to: 'sessions#destroy',  via: 'delete'
+
 
 
 

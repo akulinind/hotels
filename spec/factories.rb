@@ -8,6 +8,7 @@ FactoryGirl.define do
 
   factory :hotel do
   end 
+  
   factory :rate do
     rate 5
     comment "Some comment"

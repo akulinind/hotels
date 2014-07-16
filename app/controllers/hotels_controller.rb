@@ -20,28 +20,22 @@ class HotelsController < ApplicationController
     @hotel = Hotel.new(hotel_params) 
     @hotel.user = current_user
     @address = @hotel.build_address(address_params)
-
     if @hotel.save && @address.save
       flash[:success] = "New hotel was added successfully"  
       redirect_to hotels_url
     else
       render 'new'
     end
-
   end
-
 
 private
 
     def hotel_params
       params.require(:hotel).permit(:title, :stars, :breakfast, :description, :price, :photo)
     end
- 
+
     def address_params
       params.require(:address).permit(:country, :city, :state, :street)
     end
-
     
-
-
 end

@@ -5,12 +5,11 @@ describe Hotel do
   before do
   	@user = User.new(id: 1, name: "Example User", email: "user@example.com", password: "foobar", password_confirmation: "foobar") 
   	@hotel = Hotel.new(title: "Grand Hotel", stars: 5, breakfast: true, description: "Nice room", price: 500.00)
-	@hotel.user = @user
-	@address = @hotel.build_address(country: "Ukraine", city: "L'viv", street: "Svobody, 10")
+	  @hotel.user = @user
+	  @address = @hotel.build_address(country: "Ukraine", city: "L'viv", street: "Svobody, 10")
   end
 
   subject { @hotel }
-
   it { should respond_to(:title) }
   it { should respond_to(:stars) }
   it { should respond_to(:breakfast) }
@@ -24,7 +23,6 @@ describe Hotel do
   it { should respond_to(:user) }
   its(:user) { should eq @user }
   its(:address) { should eq @address }
-  
   it { should be_valid }
 
   describe "when hotel title is not present" do
@@ -42,7 +40,6 @@ describe Hotel do
       hotel_with_same_title = @hotel.dup
       hotel_with_same_title.save
     end
-
     it { should_not be_valid }
   end
 
@@ -57,10 +54,8 @@ describe Hotel do
     its(:rate_avg) { should eq 0.0 }
   end
 
-  describe "rates associations" do
-     
+  describe "rates associations" do  
      before { @hotel.save }
-     
      let!(:rate1) do
        @hotel.rates.build(rate: 5, comment: "text", created_at: 1.hour.ago)
      end
@@ -73,11 +68,8 @@ describe Hotel do
      let!(:rate4) do
        @hotel.rates.build(rate: 4, comment: "text", created_at: 1.day.ago)
      end
-
      it "should have the right rates in the right order" do
        expect(@hotel.rates.to_a).to eq [rate1, rate2, rate3, rate4]
      end
-
-  end 
-  
+  end   
 end

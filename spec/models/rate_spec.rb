@@ -9,6 +9,7 @@ describe Rate do
 	  @rate.user = @user
   	@rate.hotel = @hotel
   end
+
   subject { @rate }
   it { should respond_to(:rate) }
   it { should respond_to(:comment) }
@@ -21,6 +22,7 @@ describe Rate do
     before { @rate.rate = nil }
     it { should_not be_valid }
   end
+  
   describe "when rate comment is not present" do
     before { @rate.comment = " " }
     it { should_not be_valid }

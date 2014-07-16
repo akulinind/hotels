@@ -4,7 +4,7 @@
 <div class="row">
   <div class="span6 offset3">
 	<%= form_for(@hotel) do |f| %>
-	  <%= render 'shared/error_messages', object: f.object %>
+	    <%= render 'shared/error_messages', object: f.object %>
 
 	    <%= f.label :title %>
 	    <%= f.text_field :title %>
@@ -15,26 +15,25 @@
       <%= f.label :photo %>
       <%= f.file_field :photo %>
 
-        <%= f.label :breakfast %> 
-        <%= f.check_box :breakfast %>
+      <%= f.label :breakfast %> 
+      <%= f.check_box :breakfast %>
 
-        <%= f.label :description %> 
-        <%= f.text_area :description %>
+      <%= f.label :description %> 
+      <%= f.text_area :description %>
 
-        <%= f.label :price %>
+      <%= f.label :price %>
 	    <%= f.text_field :price %>
 
 	    <%= fields_for @address do |fa| %>
-          <%=fa.label :country %>
-          <%=fa.text_field :country %>
-          <%=fa.label :city %>
-          <%=fa.text_field :city %>
-          <%=fa.label :state %>
-          <%=fa.text_field :state %>
-          <%=fa.label :street %>
-          <%=fa.text_field :street %>
-        <% end %>
-
+        <%=fa.label :country %>
+        <%=fa.text_field :country %>
+        <%=fa.label :city %>
+        <%=fa.text_field :city %>
+        <%=fa.label :state %>
+        <%=fa.text_field :state %>
+        <%=fa.label :street %>
+        <%=fa.text_field :street %>
+      <% end %>
 	  <%= f.submit "Save", class: "btn btn-large btn-primary" %>
 	<% end %>
   </div>

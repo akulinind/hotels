@@ -1,8 +1,10 @@
 Hotels::Application.routes.draw do
   resources :users
+  resources :admins
   resources :sessions, only: [:new, :create, :destroy]
   resources :hotels, only: [:index, :new, :create, :show]
   resources :rates, only: [:create]
+  resources :admins_sessions, only: [:new, :create, :destroy]
 
   root  'static_pages#home'
   match '/home',    to: 'static_pages#home', via: 'get' 
@@ -10,6 +12,14 @@ Hotels::Application.routes.draw do
   match '/signup',  to: 'users#new',     via: 'get'
   match '/signin',  to: 'sessions#new',  via: 'get'
   match '/signout', to: 'sessions#destroy',  via: 'delete'
+  match '/admin',   to: 'admins_sessions#new', via: 'get'
+  match '/admin',   to: 'admin#destroy', via: 'del'
+  match '/admin_dashboard', to: 'admins#admin', via: 'get'
+
+#  match '/admin',   to: 'admins#admin_new', via: 'get'
+
+
+
 
 
 

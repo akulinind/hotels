@@ -1,0 +1,27 @@
+<div class="row span4">
+  <h1> Admin Panel </h1>  
+  <% if admin_signed_in? %>
+    <br> Hello, admin <br/>
+      <table>
+        <thead>
+          <td><strong>id</strong></td>
+          <td><strong>username</strong> </td>
+          <td><strong>email</strong> </td>
+          <td><strong>delete user</strong></td>
+        </thead>
+        <% @users.each do |user| %>
+          <%= render user %>
+        <% end %>
+      </table>  
+  <% else %>
+    <p> Admin Zone </p>  
+    <%= form_for(:admins_session, url: admins_sessions_path) do |f| %>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+      <%= f.submit "Sign in", class: "btn btn-large btn-primary" %>
+    <% end %>
+
+  <% end %>
+</div>      

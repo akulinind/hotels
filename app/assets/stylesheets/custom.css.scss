@@ -211,3 +211,22 @@ aside {
     margin-bottom: 5px;
   }
 }
+/* admin dashboard */
+table, th, td {
+  border: 1px solid purple;
+}
+table {
+  width: 100%;
+  margin: 10px;
+}
+th {
+  height: 50px;
+}
+td {
+  height:50px;
+  vertical-align: bottom;
+  padding: 15px;
+}
+thead {
+
+}

@@ -7,6 +7,10 @@ class AdminsController < ApplicationController
     @admin = Admin.new
   end
 
+  def home
+    @users = User.paginate(page: params[:page])
+  end
+
 
 
   #def create

@@ -1,0 +1,6 @@
+<tr>
+	<td><%= user.id %></td>
+	<td><%= user.name %></td>
+	<td><%= user.email %></td>
+	<td><%= link_to "delete", user, method: :delete, data: { confirm: "You sure?" }, title: user.name %></td>
+</tr>

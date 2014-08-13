@@ -12,24 +12,15 @@
           <td><strong>id</strong></td>
           <td><strong>username</strong> </td>
           <td><strong>email</strong> </td>
+          <td><strong>hotels</strong> </td>
+          <td><strong>rates</strong> </td>
           <td><strong>delete user</strong></td>
         </thead>
         <% @users.each do |user| %>
           <%= render user %>
         <% end %>
       </table>  
-      <table>
-        <thead>
-          <td><strong>Name</strong></td>
-          <td><strong>email</strong></td>
-          <td><strong>password</strong></td>
-        </thead>  
-        <%= fields_for :user do |builder| %>
-          <td><%=builder.text_field :name %> </td>  
-          <td><%=builder.text_field :email %> </td> 
-          <td><%=builder.text_field :password %> </td> 
-          <td><%=builder.submit "submit" , class: "btn btn-large btn-primary"%> </td>
-        <% end %>
+
 
   <% else %>
     <p> Admin Zone </p>  

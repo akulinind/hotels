@@ -1,6 +1,6 @@
 class Hotel < ActiveRecord::Base
   mount_uploader :photo, PhotoUploader
-  belongs_to :user
+  belongs_to :user, dependent: :destroy
   has_many :rates, inverse_of: :hotel
   has_one :address
   default_scope -> { order 'rate_avg DESC, rates_count DESC'}

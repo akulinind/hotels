@@ -10,10 +10,10 @@
       <table>
         <thead>
           <td><strong>id</strong></td>
-          <td><strong>username</strong> </td>
-          <td><strong>email</strong> </td>
-          <td><strong>hotels</strong> </td>
-          <td><strong>rates</strong> </td>
+          <td><strong><%= link_to "username", :sort => "name" %> </strong> </td>
+          <td><strong><%= link_to "email", :sort => "email" %> </strong> </td>
+          <td><strong><%= link_to "hotels", :sort => "hotels" %> </strong> </td>
+          <td><strong><%= link_to "rates", :sort => "rates" %> </strong> </td>          
           <td><strong>delete user</strong></td>
         </thead>
         <% @users.each do |user| %>

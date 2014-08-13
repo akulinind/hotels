@@ -8,8 +8,9 @@ class AdminsController < ApplicationController
   end
 
   def home
-    @users = User.paginate(page: params[:page])
+    @users = User.order(params[:sort]) 
   end
+
 
 
 

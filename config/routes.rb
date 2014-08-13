@@ -13,10 +13,9 @@ Hotels::Application.routes.draw do
   match '/signin',  to: 'sessions#new',  via: 'get'
   match '/signout', to: 'sessions#destroy',  via: 'delete'
   match '/admin',   to: 'admins_sessions#new', via: 'get'
-  match '/admin',   to: 'admin#destroy', via: 'del'
   match '/admin_dashboard', to: 'admins#home', via: 'get'
+  match '/admin_signout', to: 'admins_sessions#destroy', via: 'delete'
 
-#  match '/admin',   to: 'admins#admin_new', via: 'get'
 
 
 

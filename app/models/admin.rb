@@ -19,4 +19,5 @@ class Admin < ActiveRecord::Base
     def create_remember_token
       self.remember_token = Admin.encrypt(Admin.new_remember_token)
     end
+
 end

@@ -2,6 +2,11 @@
   <h1> Admin Panel </h1>  
   <% if admin_signed_in? %>
     <br> Hello, admin <br/>
+    <%= link_to "End admin session", admin_signout_path, :method => :delete %>
+    <%= link_to "Add user", signup_path, :method => :get %>
+
+
+ 
       <table>
         <thead>
           <td><strong>id</strong></td>
@@ -13,6 +18,19 @@
           <%= render user %>
         <% end %>
       </table>  
+      <table>
+        <thead>
+          <td><strong>Name</strong></td>
+          <td><strong>email</strong></td>
+          <td><strong>password</strong></td>
+        </thead>  
+        <%= fields_for :user do |builder| %>
+          <td><%=builder.text_field :name %> </td>  
+          <td><%=builder.text_field :email %> </td> 
+          <td><%=builder.text_field :password %> </td> 
+          <td><%=builder.submit "submit" , class: "btn btn-large btn-primary"%> </td>
+        <% end %>
+
   <% else %>
     <p> Admin Zone </p>  
     <%= form_for(:admins_session, url: admins_sessions_path) do |f| %>

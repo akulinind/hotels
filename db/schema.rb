@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140811155233) do
+ActiveRecord::Schema.define(version: 20140814161002) do
 
   create_table "addresses", force: true do |t|
     t.integer  "hotel_id"
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 20140811155233) do
     t.decimal  "rate_avg",    default: 0.0
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "status",      default: "pending"
   end
 
   add_index "hotels", ["rate_avg", "rates_count"], name: "index_hotels_on_rate_avg_and_rates_count"

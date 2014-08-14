@@ -1,7 +1,7 @@
 class AdminsController < ApplicationController
+  include AdminsSessionsHelper
 
-  before_action :signed_in_admin, only: [:edit, :update]
-  before_action :correct_admin,   only: [:edit, :update]
+  before_action :admin_signed_in, only: [:edit, :update]
 
   def new
     @admin = Admin.new
@@ -13,6 +13,15 @@ class AdminsController < ApplicationController
 
   def hotels
     @hotels = Hotel.order(params[:sort]) 
+  end
+
+
+  def update
+    if params.has_key?(:new_status)
+      hotel = Hotel.find(params[:id])
+      hotel.update_attribute('status', params[:status])
+      redirect_to admins_hotels_path
+    end
   end
 
 

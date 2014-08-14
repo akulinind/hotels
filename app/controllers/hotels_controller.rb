@@ -16,6 +16,14 @@ class HotelsController < ApplicationController
     @address = @hotel.build_address
   end
 
+  def update
+    if params.has_key?(:new_status)
+      hotel = Hotel.find(params[:id])
+      hotel.update_attribute('status', params[:status])
+      redirect_to admins_hotels_path
+    end
+  end
+
   def create
     @hotel = Hotel.new(hotel_params) 
     @hotel.user = current_user
@@ -27,6 +35,7 @@ class HotelsController < ApplicationController
       render 'new'
     end
   end
+
 
 private
 

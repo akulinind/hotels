@@ -6,11 +6,14 @@
     <%= link_to "End admin session", admin_signout_path, :method => :delete %>
           <table>
             <thead>
-              <td><strong>Hotel </strong></td>
+              <td><strong><%= link_to "Hotel id", :sort => "title" %> </strong> </td>
               <td><strong><%= link_to "Hotel name", :sort => "title" %> </strong> </td>
               <td><strong><%= link_to "Count of stars", :sort => "stars"  %> </strong> </td>
               <td><strong><%= link_to "Rating", :sort => "rate.avg" %> </strong> </td>
-              <td><strong><%= link_to "Status", :sort => "rate.avg" %> </strong> </td>
+              <td><strong><%= link_to "Status", :sort => "status" %> </strong> </td>
+              <td><strong><%= link_to "Status&", :sort => "status" %> </strong> </td>
+
+
             </thead>
             <% @hotels.each do |hotel| %>
               <%= render hotel %>

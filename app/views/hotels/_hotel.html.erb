@@ -1,10 +1,22 @@
-<li id="<%= hotel.id %>">
-  <span class="photo">
-  	<img src='<%= "#{hotel.photo_url}" %>' height='100' width='100'> 
-  </span>	
-  <span class="hotel">
-    <%= link_to hotel.title, hotel %>
-    <%= "*"*hotel.stars %>
-  </span>
-  <span class="content"><%= "Average of #{ pluralize(hotel.rates_count, "rate") }: #{ '%.1f' % hotel.rate_avg } / 5" %></span>
-</li>
+<% if admin_signed_in? %>
+  	<tr>	
+  		<td>blank</td>
+		<td><%= hotel.title %></td>
+		<td><%= hotel.stars %></td>
+		<td><%= hotel.rate_avg %></td>
+		<td>Status in production></td>
+	</tr>	
+  
+<% else %>
+
+	<li id="<%= hotel.id %>">
+	  <span class="photo">
+	  	<img src='<%= "#{hotel.photo_url}" %>' height='100' width='100'> 
+	  </span>	
+	  <span class="hotel">
+	    <%= link_to hotel.title, hotel %>
+	    <%= "*"*hotel.stars %>
+	  </span>
+	  <span class="content"><%= "Average of #{ pluralize(hotel.rates_count, "rate") }: #{ '%.1f' % hotel.rate_avg } / 5" %></span>
+	</li>
+<% end %>	

@@ -1,0 +1,33 @@
+<div class="row span4">
+  <h1> Admin Panel </h1>  
+  <% if admin_signed_in? %>
+    <br> Hello, admin <br/>
+    <%= link_to "Manage users", admin_dashboard_path %>
+    <%= link_to "End admin session", admin_signout_path, :method => :delete %>
+          <table>
+            <thead>
+              <td><strong>Hotel </strong></td>
+              <td><strong><%= link_to "Hotel name", :sort => "title" %> </strong> </td>
+              <td><strong><%= link_to "Count of stars", :sort => "stars"  %> </strong> </td>
+              <td><strong><%= link_to "Rating", :sort => "rate.avg" %> </strong> </td>
+              <td><strong><%= link_to "Status", :sort => "rate.avg" %> </strong> </td>
+            </thead>
+            <% @hotels.each do |hotel| %>
+              <%= render hotel %>
+            <% end %>
+
+          </table>  
+
+
+      <% else %>
+        <p> Admin Zone </p>  
+        <%= form_for(:admins_session, url: admins_sessions_path) do |f| %>
+          <%= f.label :name %>
+          <%= f.text_field :name %>
+          <%= f.label :password %>
+          <%= f.password_field :password %>
+          <%= f.submit "Sign in", class: "btn btn-large btn-primary" %>
+        <% end %>
+
+      <% end %>
+    </div>      

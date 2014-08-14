@@ -11,6 +11,9 @@ class AdminsController < ApplicationController
     @users = User.order(params[:sort]) 
   end
 
+  def hotels
+    @hotels = Hotel.order(params[:sort]) 
+  end
 
 
 

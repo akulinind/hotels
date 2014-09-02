@@ -10,11 +10,9 @@ class RatesController < ApplicationController
   	
   	if @rate.save
   	  flash[:success] = "Thanks for your rate!"	
-
   	  @hotel.rates_total += @rate.rate;
   	  @hotel.rate_avg = @hotel.rates_total.to_f / @hotel.rates.count;
   	  @hotel.save
-
   	  @rate = @hotel.rates.build
   	end
 

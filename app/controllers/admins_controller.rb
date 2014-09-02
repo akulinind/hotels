@@ -15,13 +15,14 @@ class AdminsController < ApplicationController
     end
   end
 
-  def hotels_sort_link
-
-  end 
+ 
 
 
   def hotels
-    @hotels = Hotel.order(params[:sort]) 
+    @hotels = Hotel.all
+ #   @Hotels = Hotel.search(params[:search]) unless params[:search].blank?
+
+
   end
 
 

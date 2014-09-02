@@ -2,7 +2,7 @@ class HotelsController < ApplicationController
   before_action :signed_in_user, only: [:new, :create]
 
   def index
-    @hotels = Hotel.paginate(page: params[:page])
+    @hotels = Hotel.search(params[:search])
   end
 
   def show

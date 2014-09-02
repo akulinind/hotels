@@ -1,4 +1,4 @@
-<% if admin_signed_in? %>
+<% if admin_signed_in? && current_page?('/admin/hotels') %>
   	<tr>	
 		<td><%= hotel.id %> </td>
 		<td><%= hotel.title %></td>

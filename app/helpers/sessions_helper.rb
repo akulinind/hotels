@@ -25,10 +25,12 @@ module SessionsHelper
   end
 
   def signed_in_user  
-    unless signed_in?
-      store_location
-      flash[:notice] = "Please sign in."
-      redirect_to signin_url
+    if not admin_signed_in?
+      unless signed_in?
+        store_location
+        flash[:notice] = "Please sign in."
+        redirect_to signin_url
+      end
     end
   end
 

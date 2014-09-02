@@ -8,8 +8,17 @@ class AdminsController < ApplicationController
   end
 
   def home
-    @users = User.order(params[:sort]) 
+    unless params[:sort_by].nil?
+      @users = User.send(params[:sort_by])
+    else
+      @users = User.all  
+    end
   end
+
+  def hotels_sort_link
+
+  end 
+
 
   def hotels
     @hotels = Hotel.order(params[:sort]) 

@@ -12,8 +12,6 @@
               <td><strong><%= link_to "Rating", :sort => "rate.avg" %> </strong> </td>
               <td><strong><%= link_to "Status", :sort => "status" %> </strong> </td>
               <td><strong><%= link_to "Status&", :sort => "status" %> </strong> </td>
-
-
             </thead>
             <% @hotels.each do |hotel| %>
               <%= render hotel %>

@@ -94,8 +94,8 @@ namespace :db do
                             stars: rg.rand(5),
                             breakfast: rg.rand(2) == 1,
                             description: Faker::Lorem.paragraph,
-                            price: rg.rand(200..2000),
-                            status: "approved")
+                            price: rg.rand(200..2000)
+                            )
 
       hotel.user = users[rg.rand(5)]
       hotel.build_address(country: Faker::Address.country,

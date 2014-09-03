@@ -47,10 +47,10 @@ class User < ActiveRecord::Base
       order('rates_count') }
 
   def self.search(search)
-    if params[:search] = "All"
-      find(:all)
+    if search
+      find(:all, :conditions => ['email LIKE ? or name LIKE?', "%#{search}%", "%#{search}%"])
     else
-      find(:all, :conditions => ['name LIKE ?', "%#{search}%"])
+      find(:all)
     end
   end
 

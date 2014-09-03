@@ -3,7 +3,7 @@ class HotelsController < ApplicationController
   before_action :signed_in_user, only: [:new, :create]
 
   def index
-    @hotels = Hotel.search(params[:search])
+    @hotels = Hotel.where("status='approved'").search(params[:search])
   end
 
   def show

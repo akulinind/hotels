@@ -32,6 +32,11 @@ class AdminsController < ApplicationController
     if params.has_key?(:status)
       @hotel = Hotel.find(params[:id])
       hotel.update_attribute('status', params[:status])
+      if params[:status] == "rejected" 
+        UserMailer.reject_hotel(hotel).deliver
+      elsif param[:status] == "approved"
+        UserMailer.approve_hotel(hotel).deliver
+      end     
       redirect_to admins_hotels_path
     end
   end

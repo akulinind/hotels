@@ -5,7 +5,13 @@
     <%= link_to "Manage hotels", admin_hotels_path %>
     <%= link_to "End admin session", admin_signout_path, :method => :delete %>
     <%= link_to "Add user", signup_path, :method => :get %>
-
+    <h4> Seraching by name:</h4>
+    <%= form_tag admin_dashboard_path, :method => 'get' do %>
+      <p>
+        <%= text_field_tag :search, params[:search] %>
+        <%= submit_tag "Search", :name => nil %>
+      </p>
+    <% end %>
 
  
       <table>

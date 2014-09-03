@@ -10,6 +10,7 @@ class Hotel < ActiveRecord::Base
   validates :title, presence: true, length: { maximum: 50 }, uniqueness: { case_sensitive: false }
   validates :stars, presence: true, numericality: { only_integer: true }
   validates :price, numericality: true
+
   def self.search(search)
     if search
       find(:all, :conditions => ['title LIKE ?', "%#{search}%"])
@@ -17,6 +18,7 @@ class Hotel < ActiveRecord::Base
       find(:all)
     end
   end
+
 
 
 end

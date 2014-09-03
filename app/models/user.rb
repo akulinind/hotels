@@ -46,6 +46,13 @@ class User < ActiveRecord::Base
       group('rates.user_id').
       order('rates_count') }
 
+  def self.search(search)
+    if search
+      find(:all, :conditions => ['name LIKE ?', "%#{search}%"])
+    else
+      find(:all)
+    end
+  end
 
   def User.new_remember_token
     SecureRandom.urlsafe_base64

@@ -8,11 +8,15 @@ class AdminsController < ApplicationController
   end
 
   def home
-    unless params[:sort_by].nil?
-      @users = User.send(params[:sort_by])
+    if params[:search].nil?
+      unless params[:sort_by].nil?
+        @users = User.send(params[:sort_by])
+      else
+        @users = User.all  
+      end
     else
-      @users = User.all  
-    end
+      @users = User.search(params[:search])
+    end  
   end
 
  

@@ -13,6 +13,16 @@
       </p>
     <% end %>
 
+<%#    <%= select_tag "status", options_from_collection_for_select(@hotels, "status")  %>
+<%#    <%= select_tag "status", "<option>Approved</option><option>Rejected</option><option>Pending</option>".html_safe, multiple: true %>
+<%#    <%= form_tag admin_hotels_path, :method => 'get' do %>
+<%#        <p>
+<%#            <%= select_tag :status, options_from_collection_for_select(Status.all, params[:status])  %>
+<%#            <%= submit_tag "Search", :status => nil %>
+<%#        </p>
+<%#    <% end %>  
+
+
     <table>
       <thead>
         <td><strong><%= link_to "Hotel id", :sort => "hotel_id" %> </strong> </td>
@@ -26,7 +36,6 @@
         <%= render hotel %>
       <% end %>
     </table> 
-
   <% else %>
     <p> Admin Zone </p>  
     <%= form_for(:admins_session, url: admins_sessions_path) do |f| %>

@@ -5,13 +5,17 @@
     <%= link_to "Manage users", admin_dashboard_path %>
     <%= link_to "End admin session", admin_signout_path, :method => :delete %>
 
-    <h4> Seraching by title:</h4>
+    <h4> Filter by status:</h4>
     <%= form_tag admin_hotels_path, :method => 'get' do %>
       <p>
-        <%= text_field_tag :search, params[:search] %>
-        <%= submit_tag "Search", :title => nil %>
+        <%= select_tag(:search, options_for_select([['Approved', "Approved"], ['Rejected', 'Rejected'], ['Pending', 'Penging'], []])  )%>
+        <%= submit_tag "Search", :status => nil %>
+  
+<%#        <%= text_field_tag :search, params[:search] %>
+<%#        <%= submit_tag "Search", :title => nil %>
       </p>
     <% end %>
+
 
 <%#    <%= select_tag "status", options_from_collection_for_select(@hotels, "status")  %>
 <%#    <%= select_tag "status", "<option>Approved</option><option>Rejected</option><option>Pending</option>".html_safe, multiple: true %>
@@ -21,6 +25,12 @@
 <%#            <%= submit_tag "Search", :status => nil %>
 <%#        </p>
 <%#    <% end %>  
+<%#    <%= form_tag 'admin_hotels_path', :method => :get do %>
+<%#      <%= text_field_tag :value_one %>
+<%#     <%= text_field_tag :value_two %>
+<%#      <%= submit_tag 'Filter' %>
+<%#    <% end %>
+
 
 
     <table>
@@ -30,7 +40,7 @@
         <td><strong><%= link_to "Count of stars", :sort => "stars"  %> </strong> </td>
         <td><strong><%= link_to "Rating", :sort => "rate.avg" %> </strong> </td>
         <td><strong><%= link_to "Status", :sort => "status" %> </strong> </td>
-        <td><strong><%= link_to "Status&", :sort => "status" %> </strong> </td>
+        <td><strong><%= link_to "Current Status", :sort => "status" %> </strong> </td>
       </thead>
       <% @hotels.each do |hotel| %>
         <%= render hotel %>

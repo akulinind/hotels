@@ -23,10 +23,14 @@ class AdminsController < ApplicationController
 
 
   def hotels
-    @hotels = Hotel.search(params[:search])
+    if params[:search].nil?
+      @hotels = Hotel.all
+    else
+
+      @hotels = Hotel.search(params[:search])
+
+    end
  #   @Hotels = Hotel.search(params[:search]) unless params[:search].blank?
-
-
   end
 
 

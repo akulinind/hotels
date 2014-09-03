@@ -5,7 +5,7 @@
 		<td><%= hotel.stars %></td>
 		<td><%= hotel.rate_avg %></td>
 		<% if hotel.status == 'pending' %>
-			<td><%= link_to 'approve', admin_hotels_path(hotel, status: 'approved'), method: :patch %> / <%= link_to 'reject', admin_hotels_path(hotel, status: 'rejected'), method: :patch %></td>
+			<td><%= link_to 'approve', hotel_path(hotel, status: 'approved'), method: :put   %> / <%= link_to 'rejecte', hotel_path(hotel, status: 'rejected'), method: :put %></td>
 		<% else %>
 			<td></td>
 		<% end %>

@@ -31,7 +31,7 @@ namespace :db do
                             breakfast: rg.rand(2) == 1,
                             description: Faker::Lorem.paragraph,
                             price: rg.rand(200..2000),
-                            status: "Rejected")
+                            status: "rejected")
 
       hotel.user = users[rg.rand(15)]
       hotel.build_address(country: Faker::Address.country,
@@ -63,7 +63,7 @@ namespace :db do
                             breakfast: rg.rand(2) == 1,
                             description: Faker::Lorem.paragraph,
                             price: rg.rand(200..2000),
-                            status: "Pending")
+                            status: "pending")
 
       hotel.user = users[rg.rand(15)]
       hotel.build_address(country: Faker::Address.country,
@@ -95,7 +95,7 @@ namespace :db do
                             breakfast: rg.rand(2) == 1,
                             description: Faker::Lorem.paragraph,
                             price: rg.rand(200..2000),
-                            status: "Approved")
+                            status: "approved")
 
       hotel.user = users[rg.rand(5)]
       hotel.build_address(country: Faker::Address.country,

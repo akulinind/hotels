@@ -1,4 +1,5 @@
 class HotelsController < ApplicationController
+
   before_action :signed_in_user, only: [:new, :create]
 
   def index
@@ -17,10 +18,10 @@ class HotelsController < ApplicationController
   end
 
   def update
-    if params.has_key?(:new_status)
+    if params.has_key?(:status)
       hotel = Hotel.find(params[:id])
-      hotel.update_attribute('status', params[:status])
-      redirect_to admins_hotels_path
+      hotel.update_attribute('status', params[:status]) 
+      redirect_to(:back)
     end
   end
 

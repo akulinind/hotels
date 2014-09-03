@@ -8,7 +8,7 @@
     <h4> Filter by status:</h4>
     <%= form_tag admin_hotels_path, :method => 'get' do %>
       <p>
-        <%= select_tag(:search, options_for_select([['Approved', "Approved"], ['Rejected', 'Rejected'], ['Pending', 'Penging'], []])  )%>
+        <%= select_tag(:search, options_for_select([['approved', "approved"], ['rejected', 'rejected'], ['pending', 'pending'], [ 'All','']])  )%>
         <%= submit_tag "Search", :status => nil %>
   
 <%#        <%= text_field_tag :search, params[:search] %>

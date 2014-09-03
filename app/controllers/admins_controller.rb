@@ -23,20 +23,14 @@ class AdminsController < ApplicationController
 
 
   def hotels
-    if params[:search].nil?
-      @hotels = Hotel.all
-    else
-
-      @hotels = Hotel.search(params[:search])
-
-    end
+    @hotels = Hotel.search(params[:search])
  #   @Hotels = Hotel.search(params[:search]) unless params[:search].blank?
   end
 
 
   def update
-    if params.has_key?(:new_status)
-      hotel = Hotel.find(params[:id])
+    if params.has_key?(:status)
+      @hotel = Hotel.find(params[:id])
       hotel.update_attribute('status', params[:status])
       redirect_to admins_hotels_path
     end

@@ -2,7 +2,7 @@ Hotels::Application.routes.draw do
   resources :users
   resources :admins
   resources :sessions, only: [:new, :create, :destroy]
-  resources :hotels, only: [:index, :new, :create, :show]
+  resources :hotels
   resources :rates, only: [:create]
   resources :admins_sessions, only: [:new, :create, :destroy]
 
@@ -16,8 +16,10 @@ Hotels::Application.routes.draw do
   match '/admin_dashboard', to: 'admins#home', via: 'get'
   match '/admin_signout', to: 'admins_sessions#destroy', via: 'delete'
   match 'admin/hotels', to: 'admins#hotels', via: 'get' 
-  match 'admin/hotels', to: 'admins#update', via: 'put'
- 
+  match 'admin/hotels', to: 'admins#update', via: 'patch'
+   resources :admins do
+    resources :hotels
+  end
 
 
 

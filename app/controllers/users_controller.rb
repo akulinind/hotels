@@ -15,8 +15,6 @@ class UsersController < ApplicationController
     if admin_signed_in? && @user.save
       redirect_to admin_dashboard_path
     else  
-
-
       if @user.save 
         sign_in @user
         flash[:success] = "Welcome to the Hotels Rating Web Site!" 

@@ -5,51 +5,37 @@
     <%= link_to "Manage users", admin_dashboard_path %>
     <%= link_to "End admin session", admin_signout_path, :method => :delete %>
 
-<%#      <%= form_tag admin_hotels_path, :method => 'get' do %>
-<%#         <p>
-<%#          <%= text_field_tag :search, params[:search] %>
-<%#          <%= submit_tag "Search", :title => nil %>
-<%#         </p>
-<%#       <% end %> 
-<%#       <% if (@hotels) %>
-<%#         <% if (@hotels.empty?) %>
-<%#           <p>No hotels found.</p>
-<%#         <% else %>
-<%#          <% @hotels.each do |hotel| %>  
-<%#             <p><%= link_to "#{hotel.title}", hotel %></p>
-<%#           <% end %>
-<%#         <% end %>
-<%#       <% else %>
-<%#          <p>Use the search form to search for stuff.</p>
-<%#       <% end %>
+    <h4> Seraching by title:</h4>
+    <%= form_tag admin_hotels_path, :method => 'get' do %>
+      <p>
+        <%= text_field_tag :search, params[:search] %>
+        <%= submit_tag "Search", :title => nil %>
+      </p>
+    <% end %>
 
-        <table>
-          <thead>
-            <td><strong><%= link_to "Hotel id", :sort => "title" %> </strong> </td>
-            <td><strong><%= link_to "Hotel name", :sort => "title" %> </strong> </td>
-            <td><strong><%= link_to "Count of stars", :sort => "stars"  %> </strong> </td>
-            <td><strong><%= link_to "Rating", :sort => "rate.avg" %> </strong> </td>
-            <td><strong><%= link_to "Status", :sort => "status" %> </strong> </td>
-            <td><strong><%= link_to "Status&", :sort => "status" %> </strong> </td>
-
-          </thead>
-          <% @hotels.each do |hotel| %>
-            <%= render hotel %>
-          <% end %>
-
-          </table> 
- 
-
-
-      <% else %>
-        <p> Admin Zone </p>  
-        <%= form_for(:admins_session, url: admins_sessions_path) do |f| %>
-          <%= f.label :name %>
-          <%= f.text_field :name %>
-          <%= f.label :password %>
-          <%= f.password_field :password %>
-          <%= f.submit "Sign in", class: "btn btn-large btn-primary" %>
-        <% end %>
-
+    <table>
+      <thead>
+        <td><strong><%= link_to "Hotel id", :sort => "hotel_id" %> </strong> </td>
+        <td><strong><%= link_to "Hotel name", :sort => "title" %> </strong> </td>
+        <td><strong><%= link_to "Count of stars", :sort => "stars"  %> </strong> </td>
+        <td><strong><%= link_to "Rating", :sort => "rate.avg" %> </strong> </td>
+        <td><strong><%= link_to "Status", :sort => "status" %> </strong> </td>
+        <td><strong><%= link_to "Status&", :sort => "status" %> </strong> </td>
+      </thead>
+      <% @hotels.each do |hotel| %>
+        <%= render hotel %>
       <% end %>
-    </div>      
+    </table> 
+
+  <% else %>
+    <p> Admin Zone </p>  
+    <%= form_for(:admins_session, url: admins_sessions_path) do |f| %>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+      <%= f.submit "Sign in", class: "btn btn-large btn-primary" %>
+    <% end %>
+  <% end %>
+
+</div>      

@@ -6,7 +6,7 @@ describe Hotel do
   	@user = User.new(id: 1, name: "Example User", email: "user@example.com", password: "foobar", password_confirmation: "foobar") 
   	@hotel = Hotel.new(title: "Grand Hotel", stars: 5, breakfast: true, description: "Nice room", price: 500.00)
 	  @hotel.user = @user
-	  @address = @hotel.build_address(country: "Ukraine", city: "L'viv", street: "Svobody, 10")
+	  @address = @hotel.build_address(country: "Hello", city: "L'viv", street: "Svobody, 10")
   end
 
   subject { @hotel }
@@ -41,6 +41,20 @@ describe Hotel do
       hotel_with_same_title.save
     end
     it { should_not be_valid }
+  end
+  describe "when hotel price non numerical" do
+    before { @hotel.price = "price" }
+    it { should_not be_valid }
+  end
+
+  describe "when stars non numerical" do
+    before { @hotel.stars = "six"}
+    it { should_not be_valid}
+  end
+
+  describe "when stars not 1" do
+    before { @hotel.stars = 6}
+    it { should_not be_valid}
   end
 
   describe "when star rating is not present" do

@@ -8,6 +8,7 @@ describe User do
   end
 
   subject { @user }
+  it { should respond_to(:id)}
   it { should respond_to(:name) }
   it { should respond_to(:email) }
   it { should respond_to(:password_digest) }
@@ -17,19 +18,21 @@ describe User do
   it { should respond_to(:authenticate) }
   it { should be_valid }
 
+
+
   describe "when name is not present" do
     before { @user.name = " " }
+    it { should_not be_valid }
+  end
+
+  describe "when name is too long" do
+    before { @user.name = "a"*51 }
     it { should_not be_valid }
   end
 
   describe "when email is not present" do
   	before { @user.email = " " }
   	it {should_not be_valid}
-  end
-
-  describe "when name is too long" do
-  	before { @user.name = "a"*51 }
-  	it { should_not be_valid }
   end
 
   describe "when email address is already taken" do
@@ -58,6 +61,8 @@ describe User do
     before { @user.password = @user.password_confirmation = "a" * 5 }
     it { should be_invalid }
   end
+
+
 
   describe "return value of authenticate method" do
     before { @user.save }

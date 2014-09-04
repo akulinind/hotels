@@ -18,6 +18,7 @@ describe Rate do
   its(:user) { should eq @user }
   its(:hotel) { should eq @hotel }
   it { should be_valid }
+
   describe "when rate is not present" do
     before { @rate.rate = nil }
     it { should_not be_valid }
@@ -27,4 +28,22 @@ describe Rate do
     before { @rate.comment = " " }
     it { should_not be_valid }
   end
+
+  describe "when rate greater 5" do
+    before { @rate.rate = 6 }
+    it { should_not be_valid }
+  end
+
+  describe "when rate=0" do
+    before { @rate.rate = 0 }
+    it { should_not be_valid }
+  end
+
+  describe "when rate stirng" do
+    before { @rate.rate = "yes"}
+    it { should_not be_valid}
+  end
+
+
+
 end

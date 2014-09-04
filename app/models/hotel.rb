@@ -8,14 +8,14 @@ class Hotel < ActiveRecord::Base
     self.title = title.strip
   end 
   validates :title, presence: true, length: { maximum: 50 }, uniqueness: { case_sensitive: false }
-  validates :stars, presence: true, numericality: { only_integer: true }
+  validates :stars, presence: true, numericality: { only_integer: true, greater_than: 0, less_than_or_equal_to: 5  }
   validates :price, numericality: true
 
   def self.search(search)
     if search
       find(:all, :conditions => ['status LIKE ?', "%#{search}%"])
     else
-      find(:all)
+      all
     end
   end
 

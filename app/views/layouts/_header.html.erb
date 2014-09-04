@@ -5,11 +5,11 @@
       <nav>
         <ul class="nav pull-right">
           <li><%= link_to "Home", root_path %></li>
-          <li><%= link_to "Add Hotel", new_hotel_path %></li>
           <li><%= link_to "Rating", rating_path %></li>
           <% if signed_in? %>
             <li><%= link_to "Edit profile", edit_user_path(current_user)%></li>
             <li><%= link_to "Sign out", signout_path, method: "delete" %></li>
+            <li><%= link_to "Add Hotel", new_hotel_path %></li>
           <% else %>
             <li><%= link_to "Sign in / Sign up", signin_path %></li>
           <% end %>

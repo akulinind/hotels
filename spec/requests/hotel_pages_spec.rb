@@ -54,14 +54,13 @@ describe 'Add new hotel page: ' do
         let(:description) { 'description' }
         let(:price) { 500 }
         let(:country) { 'Example' }
-        let(:state) { 'Ecample' }
+        let(:state) { 'Example' }
         let(:city) { 'Example' }
         let(:street) { 'Example'}
         before do
           fill_in 'Title', with: title
           select stars.to_s, from: 'Stars'
           check 'Breakfast'
-          attach_file 'Photo', "#{Rails.root}/app/assets/images/fallback/#{ photo }"
           fill_in 'Description', with: description
           fill_in 'Price', with: price
           fill_in 'Country', with: country
@@ -71,7 +70,34 @@ describe 'Add new hotel page: ' do
         end
         it "should create a hotel" do
           expect { click_button "Save" }.to change(Hotel, :count).by(1)
+        end  
+      end
+      context 'with invalid data' do
+        let(:title) { 'Example Hotel' }
+        let(:stars) { 5 }
+        let(:breakfast) { true }
+        let(:photo) { 'hotel_default.jpg'  }
+        let(:description) { 'description' }
+        let(:price) { "trista" }
+        let(:country) { 'Example' }
+        let(:state) { 'Example' }
+        let(:city) { 'Example' }
+        let(:street) { 'Example'}
+        before do
+          fill_in 'Title', with: title
+          select stars.to_s, from: 'Stars'
+          check 'Breakfast'
+          fill_in 'Description', with: description
+          fill_in 'Price', with: price
+          fill_in 'Country', with: country
+          fill_in 'State', with: state
+          fill_in 'City', with: city
+          fill_in 'Street', with: street
         end
+        it "should not create a hotel" do
+          expect { click_button "Save" }.not_to change(Hotel, :count)
+        end
+        
       end
     end
   end

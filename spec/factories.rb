@@ -7,8 +7,20 @@ FactoryGirl.define do
   end
 
   factory :hotel do
-  end 
-  
+    title "Grand Hotel"
+    stars 5
+    breakfast true
+    description "example"
+    price 500
+  end
+
+  factory :adress do
+    country "example"
+    state "example"
+    city "example"
+    street "example" 
+  end
+
   factory :rate do
     rate 5
     comment "Some comment"

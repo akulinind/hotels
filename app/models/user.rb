@@ -1,8 +1,7 @@
 class User < ActiveRecord::Base
   before_save { self.email = email.downcase }
   before_create :create_remember_token
-  has_many :hotels, :counter_cache => true, dependent: :destroy, :order => "hotels_count DESC"
-
+  has_many :hotels, dependent: :destroy
   has_many :rates, dependent: :destroy
   
   validates :name, presence: true, length: {maximum: 50}

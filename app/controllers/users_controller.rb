@@ -16,6 +16,7 @@ class UsersController < ApplicationController
       redirect_to admin_dashboard_path
     else  
       if @user.save 
+        UserMailer.welcome_email(@user).deliver
         sign_in @user
         flash[:success] = "Welcome to the Hotels Rating Web Site!" 
         redirect_to root_url

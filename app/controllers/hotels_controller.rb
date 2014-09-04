@@ -23,7 +23,7 @@ class HotelsController < ApplicationController
       hotel.update_attribute('status', params[:status]) 
       if params[:status] == "rejected" 
         UserMailer.reject_hotel(hotel).deliver
-      elsif param[:status] == "approved"
+      elsif params[:status] == "approved"
         UserMailer.approve_hotel(hotel).deliver
       end     
       redirect_to(:back)

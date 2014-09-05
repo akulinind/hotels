@@ -14,7 +14,6 @@ FactoryGirl.define do
 
   factory :hotel do
     status = ["pending", "rejected", "pending", "approved", "rejected", "pending","approved", "rejected", "pending", "approved"]
-
     sequence(:title) { |n| "Hotel #{n}" }
     stars 5
     breakfast true

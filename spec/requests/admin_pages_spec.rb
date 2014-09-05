@@ -1,11 +1,11 @@
 require 'spec_helper'
 
 describe "AdminPages" do
-	subject { page }
-	User.delete_all
-	Hotel.delete_all
-	5.times { FactoryGirl.create(:user) }
-	10.times { FactoryGirl.create(:hotel)}
+  subject { page }
+  User.delete_all
+  Hotel.delete_all
+  5.times { FactoryGirl.create(:user) }
+  10.times { FactoryGirl.create(:hotel)}
 	#	{	5.times { FactoryGirl.create(:hotel, user_id: Random.rand(1..5))} }
   describe "Enter to the page" do
   	let(:admin) { FactoryGirl.create(:admin) }
@@ -137,7 +137,7 @@ describe "AdminPages" do
 						end
 						describe "Status:pending" do
 								before do
-									select "pending", :from => :search 
+								  select "pending", :from => :search 
 									click_button "Search"
 								end						
 							it { should have_content "Filter by status:"}

@@ -10,15 +10,8 @@
       <p>
         <%= select_tag(:search, options_for_select([['approved', "approved"], ['rejected', 'rejected'], ['pending', 'pending'], [ 'All','']])  )%>
         <%= submit_tag "Search", :status => nil %>
-  
-
       </p>
     <% end %>
-
-
-
-
-
 
     <table>
       <thead>

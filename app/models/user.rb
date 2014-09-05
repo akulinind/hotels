@@ -14,8 +14,6 @@ class User < ActiveRecord::Base
       all.order('id DESC') }
     scope :id_asc, ->{
       all.order('id') }
-
-
     scope :name_desc, ->{
       all.order('name DESC') }
     scope :name_asc, ->{

@@ -47,9 +47,9 @@ class User < ActiveRecord::Base
 
   def self.search(search)
     if search
-      find(:all, :conditions => ['email LIKE ? or name LIKE?', "%#{search}%", "%#{search}%"])
+      User.where(['email LIKE ? or name LIKE?', "%#{search}%", "%#{search}%"])
     else
-      find(:all)
+      all
     end
   end
 

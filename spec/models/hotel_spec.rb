@@ -21,9 +21,11 @@ describe Hotel do
   it { should respond_to(:rates_total) }
   it { should respond_to(:rate_avg) }
   it { should respond_to(:user) }
+  it { should respond_to(:status) }
   its(:user) { should eq @user }
   its(:address) { should eq @address }
   it { should be_valid }
+  it { expect(@hotel.status).to eq "pending"}
 
   describe "when hotel title is not present" do
     before { @hotel.title = " " }

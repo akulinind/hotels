@@ -13,7 +13,7 @@ class Hotel < ActiveRecord::Base
 
   def self.search(search)
     if search
-      find(:all, :conditions => ['status LIKE ?', "%#{search}%"])
+      Hotel.where(['status LIKE ?', "%#{search}%"])
     else
       all
     end

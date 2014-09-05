@@ -13,9 +13,7 @@
         <%= submit_tag "Search", :name => nil %>
       </p>
     <% end %>
-
- 
-      <table>
+      <table class="Users table">
         <thead>
           <td><strong><%= sort_link "id" %></strong></td>
           <td><strong><%= sort_link "name" %></strong></td>
@@ -33,13 +31,17 @@
 
   <% else %>
     <p> Admin Zone </p>  
-    <%= form_for(:admins_session, url: admins_sessions_path) do |f| %>
-      <%= f.label :name %>
-      <%= f.text_field :name %>
-      <%= f.label :password %>
-      <%= f.password_field :password %>
-      <%= f.submit "Sign in", class: "btn btn-large btn-primary" %>
-    <% end %>
+    <div class="row">
+      <div class="span6 offset3">
+        <%= form_for(:admins_session, url: admins_sessions_path) do |f| %>
+          <%= f.label :name %>
+          <%= f.text_field :name %>
+          <%= f.label :password %>
+          <%= f.password_field :password %>
+          <%= f.submit "Admin Sign in", class: "btn btn-large btn-primary" %>
+        <% end %>
+      </div>
+    </div>
 
   <% end %>
 </div>      

@@ -1,17 +1,27 @@
 FactoryGirl.define do
   factory :user do
-    name     "Dmitriy"
-    email    "akulinind@gmail.com"
+    sequence(:name)  { |n| "Person #{n}" }
+    sequence(:email) { |n| "person_#{n}@example.com"}
     password "foobar"
     password_confirmation "foobar"
   end
 
+  factory :admin do
+    name "admin"
+    password "password"
+    password_confirmation "password"
+  end
+
   factory :hotel do
-    title "Grand Hotel"
+    status = ["pending", "rejected", "pending", "approved", "rejected", "pending","approved", "rejected", "pending", "approved"]
+
+    sequence(:title) { |n| "Hotel #{n}" }
     stars 5
     breakfast true
     description "example"
     price 500
+    user
+    sequence(:status) {|n| status[n]}
   end
 
   factory :adress do
